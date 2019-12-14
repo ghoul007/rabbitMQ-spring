@@ -32,11 +32,13 @@ public class RabbitDemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		SimpleMessage simpleMessage  = new SimpleMessage();
-//		simpleMessage.setName("firstName");
-//		simpleMessage.setDescription("first description");
+		SimpleMessage simpleMessage  = new SimpleMessage();
+		simpleMessage.setName("firstName");
+		simpleMessage.setDescription("first description");
 //		rabbitTemplate.convertAndSend("TestExchange", "testRouting", simpleMessage);
 		
+		// this is example to publish message ( you can use it  for a different project )"
+		rabbitTemplate.convertAndSend("MyTopicExchange", "topic", simpleMessage);
 	}
 
 }
