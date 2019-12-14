@@ -1,4 +1,6 @@
-# Send Message to RabbitMQ Broker. 
+# RabitMQ Spring
+
+## Send Message to RabbitMQ Broker. 
 
 Add RabbitMQ dependency
 
@@ -12,7 +14,7 @@ Add RabbitMQ dependency
 
 
 A ConnectionFactory object is used by the client to make connections to the server
-```
+```java
 @Bean
 public ConnectionFactory connectionFactory() {
     CachingConnectionFactory factory =  new CachingConnectionFactory("172.17.0.2");
@@ -25,17 +27,18 @@ public ConnectionFactory connectionFactory() {
 
 
 Publish message
-```
+```java
 @Autowired
 private RabbitTemplate rabbitTemplate;
 
 rabbitTemplate.convertAndSend("MyTopicExchange", "topic", simpleMessage);
 ```
 
+## Receive Message from RabbitMQ Broker. 
 
 Receive event message
 
-```
+```java
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 
